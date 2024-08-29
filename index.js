@@ -28,6 +28,25 @@ app.get("/", (req, res) => {
   });
 });
 
+// Your Google Places API key
+const API_KEY = process.env.PLACES_KEY;
+
+app.get("/places/*", async (req, res) => {
+  try {
+    const endpoint = req.params[0];
+    const queryParams = new url.URLSearchParams(req.query);
+    queryParams.append("key", API_KEY);
+
+    const apiUrl = `https://maps.googleapis.com/maps/api/place/${endpoint}?${queryParams}`;
+
+    const response = await axios.get(apiUrl);
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error:", error.message);
+    res.status(error.response?.status || 500).json({ error: error.message });
+  }
+});
+
 // routes
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/riders", require("./routes/rider.routes"));
