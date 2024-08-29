@@ -1,6 +1,8 @@
 const express = require("express");
 const env = require("dotenv");
 const cors = require("cors");
+const axios = require("axios");
+const url = require("url");
 const dbConnect = require("./utils/db");
 
 // config env
