@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 // Your Google Places API key
-const API_KEY = process.env.PLACES_KEY;
+const API_KEY = process.env.PLACE_KEY;
 
 app.get("/places/*", async (req, res) => {
   try {
