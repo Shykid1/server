@@ -1,5 +1,6 @@
 const express = require("express");
 const env = require("dotenv");
+const cors = require("cors");
 const dbConnect = require("./utils/db");
 
 // config env
@@ -13,6 +14,7 @@ const app = express();
 
 // middleware
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.status(200).json({
