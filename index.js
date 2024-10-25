@@ -57,7 +57,7 @@ app.use("/api/riders", require("./routes/rider.routes"));
 app.use("/api/errands", require("./routes/errand.routes"));
 
 // listen
-const PORT = process.env.PORT || 8000;
+const PORT = 8890;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
